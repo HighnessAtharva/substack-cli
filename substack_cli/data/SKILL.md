@@ -114,6 +114,38 @@ substack audit post.md --json
 
 `clean: true` is the only signal that clears an update.
 
+## Scheduling needs a second cookie, and Notes need you
+
+**Posts schedule properly.** `substack schedule <id> --at "2027-01-12 09:00"` sets a real
+server-side release that fires whether or not the user's machine is on. It is the same
+mechanism the web editor uses.
+
+That one command runs against `substack.com` rather than the publication domain, so it
+needs a second cookie the user may not have saved. Run `substack doctor` first. If it says
+scheduling is unavailable, stop and tell the user to run this themselves:
+
+```bash
+substack init --hub-token
+```
+
+Do not try to work around a missing hub token, and do not fall back to publishing now.
+
+**Notes cannot be scheduled at all.** Substack has no server-side endpoint for it. Any
+tool claiming otherwise is running a queue on somebody's laptop.
+
+When the user asks to schedule a Note, say that plainly and offer the honest substitute: a
+recurring or one-off task in whatever scheduler they already run, which invokes the CLI at
+the moment they wanted.
+
+- Claude Code: create a scheduled task (a routine) that fires once at the target time and
+  runs `substack note --file "<path>"`. One task per note, a fixed time rather than a
+  cron expression, unless they genuinely want a repeating cadence.
+- Anywhere else: `cron` on Linux and macOS, or Task Scheduler on Windows, calling the same
+  command.
+
+Either way the machine running the schedule has to be awake. Say so, because a Note that
+silently never posts is worse than one posted by hand.
+
 ## Writing a post file
 
 Frontmatter needs a title and a slug. Nothing else is mandatory.
@@ -197,10 +229,23 @@ substack update ./posts/<slug>.md --yes
 **Queue a week of posts.**
 
 ```bash
+substack doctor | grep -i scheduling      # confirm the hub cookie is saved
 substack push week-1.md && substack schedule <id> --at "2027-01-12 09:00"
 ```
 
 Confirm the date, the time, and whether an email should go out before running it.
+
+**Post a Note at a specific time.**
+
+Substack cannot do this, so schedule the command rather than the Note. In Claude Code that
+is a one-off scheduled task firing at the target time and running:
+
+```bash
+substack note --file notes/tuesday.md
+```
+
+Preview it first with `--dry-run`, and tell the user the task only fires while their
+machine is awake.
 
 **Back up the archive into git.**
 

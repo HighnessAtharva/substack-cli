@@ -9,7 +9,7 @@ description = "Publish and manage Substack from the command line, or let your co
 readme = "README.md"
 requires-python = ">=3.8"
 license = { text = "MIT" }
-authors = [{ name = "Atharva Shah", email = "hello@atharvashah.com" }]
+authors = [{ name = "Atharva Shah", email = "hi@atharvashah.com" }]
 keywords = [
     "substack", "substack-api", "substack-cli", "newsletter", "publishing",
     "markdown", "static-site", "blogging", "cms", "content-ops",

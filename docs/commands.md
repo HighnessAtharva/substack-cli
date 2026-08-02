@@ -274,6 +274,10 @@ loudly instead of posting an empty note.
 
 `--dry-run` prints the exact paragraphs it would send and stops.
 
+To get a Note out at a specific time, schedule the command rather than the Note. A
+one-off Claude Code scheduled task, a `cron` entry, `at`, or Windows Task Scheduler all
+work, and all of them need the machine awake at that moment.
+
 ## note-delete
 
 ```bash

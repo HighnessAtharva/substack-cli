@@ -79,6 +79,30 @@ Read the whole thing:
 substack agent print
 ```
 
+## Scheduling, and what your agent should say about it
+
+Posts schedule for real. `substack schedule <id> --at "2027-01-12 09:00"` writes a
+server-side release that fires whether or not your machine is on, the same one the web
+editor sets.
+
+It runs against `substack.com` rather than your publication domain, so it needs a second
+cookie. Save it once and your agent can schedule from then on:
+
+```bash
+substack init --hub-token
+substack doctor            # says plainly whether scheduling is available
+```
+
+Notes are the exception. Substack has no server-side scheduling endpoint for them, so
+nothing can schedule a Note, including this tool. The installed instructions tell your
+agent to say that rather than improvise, and to offer the honest substitute: schedule the
+command instead of the Note.
+
+In Claude Code that is a one-off scheduled task (a routine) that fires at the target time
+and runs `substack note --file notes/tuesday.md`. Elsewhere it is `cron`, `at`, or Windows
+Task Scheduler calling the same line. The machine has to be awake either way, which your
+agent should tell you rather than let a Note quietly never post.
+
 ## The gate an agent can reason about
 
 `audit` is the command that makes autonomous editing safe. It compares the live page

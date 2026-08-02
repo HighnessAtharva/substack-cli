@@ -91,6 +91,12 @@ substack audit post.md --json    # {"clean": true, "destroyed": {}, ...}
 
 `clean` is the whole decision. An agent that respects it cannot delete your work.
 
+One caveat worth knowing before you ask for it. Scheduling a **post** is real and
+server-side, and needs a second cookie saved once with `substack init --hub-token`.
+Scheduling a **Note** is impossible, because Substack has no endpoint for it, so your
+agent will offer to schedule the command instead: a one-off Claude Code routine, a `cron`
+entry, or a Task Scheduler job that runs `substack note` at the moment you wanted.
+
 ## Or run it yourself
 
 ```bash
@@ -267,7 +273,7 @@ and uses this to do it.
 [![Substack](https://img.shields.io/badge/Substack-Subscribe-FF6719?style=for-the-badge&logo=substack&logoColor=white)](https://blog.atharvashah.com)
 [![GitHub](https://img.shields.io/badge/GitHub-HighnessAtharva-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/HighnessAtharva)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/atharva-shah-tech/)
-[![X](https://img.shields.io/badge/X-@AtharvaShah-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/AtharvaShah)
+[![X](https://img.shields.io/badge/X-@cultist__dev-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/cultist_dev)
 
 If this saved you an afternoon, a star helps other writers find it.
 

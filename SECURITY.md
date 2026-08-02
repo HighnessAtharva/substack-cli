@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Email **hello@atharvashah.com** with the details, or open a
+Email **hi@atharvashah.com** with the details, or open a
 [private security advisory](https://github.com/HighnessAtharva/substack-cli/security/advisories/new).
 
 Please do not open a public issue for anything that could expose someone's session.
