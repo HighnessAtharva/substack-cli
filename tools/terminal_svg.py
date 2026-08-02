@@ -21,6 +21,7 @@ GREEN = "#3fb950"
 YELLOW = "#d29922"
 RED = "#f85149"
 CYAN = "#58a6ff"
+MAGENTA = "#d2a8ff"
 WHITE = "#f0f6fc"
 DOTS = ("#ff5f57", "#febc2e", "#28c840")
 
@@ -44,6 +45,12 @@ def spans(line):
     """[(text, colour)] for one line."""
     if line.startswith("$ "):
         return [("$ ", GREEN), (line[2:], WHITE)]
+    if line.startswith("> "):
+        return [("> ", MAGENTA), (line[2:], WHITE)]
+    stripped = line.lstrip()
+    if stripped.startswith("$ "):
+        pad = line[:len(line) - len(stripped)]
+        return [(pad, DIM), ("$ ", GREEN), (stripped[2:], WHITE)]
     for pattern, colour in KEYWORDS:
         match = pattern.match(line)
         if match:

@@ -1,0 +1,27 @@
+$ substack agent install
+OK  wrote .claude/skills/substack-cli/SKILL.md
+
+Your agent can now drive Substack for you. Try asking it:
+  "what Substack drafts do I have?"
+  "push posts/my-article.md to Substack as a draft"
+  "back up my whole Substack archive into ./archive"
+
+# then, in Claude Code:
+
+> fix the typo in paragraph three of my last post and push it live
+
+  I will pull the live copy first, edit it, and audit before updating.
+
+  $ substack pull 209491778 -o ./posts --force
+  [1/1] how-i-publish-from-the-terminal  (7 image(s))
+
+  $ substack audit ./posts/how-i-publish-from-the-terminal.md --json
+  {"clean": true, "problems": [], "images": {"local": 7, "live": 7},
+   "preserved": {"youtube2": 1}, "destroyed": {}}
+
+  Audit is clean and the YouTube embed will be preserved. Updating now.
+
+  $ substack update ./posts/how-i-publish-from-the-terminal.md --yes
+OK  live post 209491778 updated: How I Publish From The Terminal
+    post_date unchanged, no email sent
+live        blog.atharvashah.com/p/how-i-publish-from-the-terminal

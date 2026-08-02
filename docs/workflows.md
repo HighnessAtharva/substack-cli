@@ -110,8 +110,8 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: pipx install "substack-cli[tables] @ git+https://github.com/HighnessAtharva/substack-cli"
       - name: Push changed posts
@@ -160,5 +160,12 @@ The command surface is small, every destructive action needs an explicit flag, a
 refusal explains itself. That makes it comfortable to hand to Claude Code, Cursor, or any
 agent that can run a shell.
 
-The skill file the author uses is in [agent-skill.md](agent-skill.md). Drop it in your
-agent's rules and it will run the audit before the update without being told twice.
+One command installs the rules the author uses:
+
+```bash
+substack agent install
+```
+
+It writes a Claude Code skill, a Cursor rule, or an `AGENTS.md` block, whichever your
+project already uses, and the agent then runs the audit before the update without being
+told twice. Full detail in [agents.md](agents.md).

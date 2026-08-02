@@ -27,6 +27,31 @@ id and user id.
 `--hub-token` also asks for the `substack.sid` cookie that scheduling needs. `--local`
 writes `./.substack.json` instead of the per-user config.
 
+## agent
+
+```bash
+substack agent [install|print] [--target claude|cursor|agents|codex] [--dir PATH] [--global] [--force]
+```
+
+Writes this tool's operating instructions into the file your coding agent already reads,
+so it can publish on your behalf. The target is detected from what your project has, and
+you can name one explicitly.
+
+| Target | File |
+|---|---|
+| `claude` | `.claude/skills/substack-cli/SKILL.md` |
+| `cursor` | `.cursor/rules/substack-cli.mdc` |
+| `agents`, `codex` | `AGENTS.md` |
+
+`AGENTS.md` gets a delimited block appended, so rules you already keep there survive, and
+running the command again replaces that block instead of stacking a second copy. A skill
+file that already exists and differs is left alone until you pass `--force`.
+
+`--global` installs into your home directory so every project picks it up, which works for
+`claude` and `cursor` only. `print` writes nothing and dumps the instructions to stdout.
+
+Full guide: [agents.md](agents.md).
+
 ## doctor
 
 ```bash
@@ -120,7 +145,7 @@ Run [`audit`](#audit) before this. Always.
 ## audit
 
 ```bash
-substack audit <file> [--template NAME] [--no-template]
+substack audit <file> [--json] [--template NAME] [--no-template]
 ```
 
 Compares the live post against what your file would produce, and exits 1 when an update
@@ -134,6 +159,25 @@ see.
 
 A structure difference is reported and does not gate. It usually means your copy was
 legitimately edited.
+
+`--json` prints the same result as a machine-readable object, which is what an agent or a
+script should read:
+
+```json
+{
+  "post_id": 209491778,
+  "clean": false,
+  "problems": ["images"],
+  "images": {"local": 5, "live": 13, "live_only": 8},
+  "preserved": {"twitter2": 3, "youtube2": 1},
+  "destroyed": {},
+  "structure_shortfall": {},
+  "warnings": []
+}
+```
+
+`clean` is the field to gate on. The exit code matches it, so `substack audit post.md &&
+substack update post.md --yes` is a safe chain either way.
 
 ## pull
 

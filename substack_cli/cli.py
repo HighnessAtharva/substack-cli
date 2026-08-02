@@ -6,7 +6,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import __version__, posts, sitemap, ui
+from . import __version__, agent, posts, sitemap, ui
 from . import config as config_module
 from . import frontmatter as fm
 from .api import Client
@@ -17,6 +17,7 @@ from .pm2md import ImageStore, doc_to_markdown
 EPILOG = """\
 examples:
   substack init                              save credentials, verify them
+  substack agent install                     let Claude Code or Cursor drive this for you
   substack doctor                            check auth, print what is configured
   substack list --limit 10                   your ten most recent drafts
   substack push post.md                      create or update a draft from markdown
@@ -415,15 +416,12 @@ def cmd_update(client, args):
     ui.kv("live", post_url(client, after.get("slug")))
 
 
-def cmd_audit(client, args):
-    """Say what `update` would destroy, before it does.
+def audit_report(client, args, path, fields, body):
+    """Compare a live post against what the local file would produce.
 
-    `update` moves content one direction only: local overwrites live. So the
-    local file has to be a superset of the live page. Anything on the page that
-    the markdown does not mention disappears with no undo and nothing in the
-    output saying so. That is what this catches.
+    Returns a plain dict so the same computation serves the human output and
+    `--json`. `clean` is the only field a caller needs to gate on.
     """
-    path, fields, body = read_article(args.file)
     post_id = posts.article_id(fields)
     if not post_id:
         die(f"{path.name} has no `id` in its frontmatter, so there is no live post "
@@ -431,29 +429,16 @@ def cmd_audit(client, args):
 
     draft = client.draft(post_id)
     live_body = posts.load_body(draft)
-    ui.heading(f"audit {path.name} against live post {post_id}")
-    ui.kv("live title", draft.get("title") or draft.get("draft_title"), 14)
-    ui.kv("local title", posts.article_title(fields, path), 14)
-    print()
-
-    problems = 0
 
     # Blocks only Substack's editor can make.
     census = posts.native_census(live_body)
-    if census:
-        natives = posts.extract_natives(live_body)
-        preserved = {node.get("type") for _, _, node in natives}
-        for kind, count in sorted(census.items()):
-            if kind in preserved:
-                ui.ok(f"{count} x {kind} will be preserved and re-anchored")
-            else:
-                ui.fail(f"{count} x {kind} exists live and markdown cannot rebuild it")
-                problems += 1
-    else:
-        ui.ok("no editor-only blocks on the live page")
+    preserved_types = {node.get("type") for _, _, node in posts.extract_natives(live_body)}
+    preserved = {kind: count for kind, count in census.items() if kind in preserved_types}
+    destroyed = {kind: count for kind, count in census.items() if kind not in preserved_types}
 
     # Images. Substack renames every upload to a CDN uuid, so filenames are
-    # useless for matching. Counting is the honest comparison.
+    # useless for matching. Counting what is not template chrome is the honest
+    # comparison.
     chrome = set()
     template = template_name(client, args)
     if template:
@@ -464,29 +449,10 @@ def cmd_audit(client, args):
         chrome.add(draft["cover_image"])
     live_images = [src for src in posts.image_census(live_body) if src not in chrome]
 
-    counter = {"n": 0}
-
-    def count_only(local_path):
-        counter["n"] += 1
-        return f"local://{local_path.name}"
-
-    predicted, report = Converter(base_dir=path.parent, upload=count_only).convert(body)
-    predicted_images = len(posts.image_census(predicted))
-
-    if predicted_images >= len(live_images):
-        ui.ok(f"images: {predicted_images} local, {len(live_images)} live "
-              f"(nothing to lose)")
-    else:
-        ui.fail(f"images: {predicted_images} local, {len(live_images)} live. "
-                f"{len(live_images) - predicted_images} image(s) exist only on Substack "
-                f"and an update would delete them.")
-        ui.step("run `substack pull " + str(post_id) + "` to bring the live copy down "
-                "and merge them into your markdown first")
-        problems += 1
-
-    for line in report.warnings:
-        ui.warn(line)
-        problems += 1
+    predicted, report = Converter(
+        base_dir=path.parent,
+        upload=lambda local: f"local://{local.name}").convert(body)
+    local_images = len(posts.image_census(predicted))
 
     # Formatting applied in the editor is invisible to a text diff, so compare
     # node-type counts instead of reading the text.
@@ -504,19 +470,105 @@ def cmd_audit(client, args):
         return counts
 
     live_counts, local_counts = type_counts(live_body), type_counts(predicted)
-    shortfalls = [(kind, live_counts[kind] - local_counts.get(kind, 0))
-                  for kind in ("blockquote", "code_block", "heading", "bullet_list",
-                               "ordered_list", "caption")
-                  if live_counts.get(kind, 0) > local_counts.get(kind, 0)]
-    if shortfalls:
+    structure = {kind: live_counts[kind] - local_counts.get(kind, 0)
+                 for kind in ("blockquote", "code_block", "heading", "bullet_list",
+                              "ordered_list", "caption")
+                 if live_counts.get(kind, 0) > local_counts.get(kind, 0)}
+
+    problems = []
+    if destroyed:
+        problems.append("blocks")
+    if local_images < len(live_images):
+        problems.append("images")
+    if report.warnings:
+        problems.append("conversion")
+
+    return {
+        "file": str(path),
+        "post_id": post_id,
+        "clean": not problems,
+        "problems": problems,
+        "live_title": draft.get("title") or draft.get("draft_title"),
+        "local_title": posts.article_title(fields, path),
+        "images": {"local": local_images, "live": len(live_images),
+                   "live_only": max(0, len(live_images) - local_images)},
+        "preserved": preserved,
+        "destroyed": destroyed,
+        "structure_shortfall": structure,
+        "warnings": list(report.warnings),
+    }
+
+
+def cmd_audit(client, args):
+    """Say what `update` would destroy, before it does.
+
+    `update` moves content one direction only: local overwrites live. So the
+    local file has to be a superset of the live page. Anything on the page that
+    the markdown does not mention disappears with no undo and nothing in the
+    output saying so. That is what this catches.
+    """
+    path, fields, body = read_article(args.file)
+    result = audit_report(client, args, path, fields, body)
+
+    if args.json:
+        print(json.dumps(result, indent=2))
+        return 0 if result["clean"] else 1
+
+    ui.heading(f"audit {path.name} against live post {result['post_id']}")
+    ui.kv("live title", result["live_title"], 14)
+    ui.kv("local title", result["local_title"], 14)
+    print()
+
+    if not result["preserved"] and not result["destroyed"]:
+        ui.ok("no editor-only blocks on the live page")
+    for kind, count in sorted(result["preserved"].items()):
+        ui.ok(f"{count} x {kind} will be preserved and re-anchored")
+    for kind, count in sorted(result["destroyed"].items()):
+        ui.fail(f"{count} x {kind} exists live and markdown cannot rebuild it")
+
+    images = result["images"]
+    if images["live_only"]:
+        ui.fail(f"images: {images['local']} local, {images['live']} live. "
+                f"{images['live_only']} image(s) exist only on Substack and an update "
+                f"would delete them.")
+        ui.step(f"run `substack pull {result['post_id']}` to bring the live copy down "
+                f"and merge them into your markdown first")
+    else:
+        ui.ok(f"images: {images['local']} local, {images['live']} live (nothing to lose)")
+
+    for line in result["warnings"]:
+        ui.warn(line)
+
+    if result["structure_shortfall"]:
         ui.warn("structure differs from live (not gated, your copy may simply be edited): "
-                + ", ".join(f"{count} fewer {kind}" for kind, count in shortfalls))
+                + ", ".join(f"{count} fewer {kind}"
+                            for kind, count in sorted(result["structure_shortfall"].items())))
 
     print()
-    if problems:
-        ui.fail(f"{problems} issue(s). Do not run `update` until they are resolved.")
-        return 1
-    ui.ok("clean. `substack update` will not lose anything.")
+    if result["clean"]:
+        ui.ok("clean. `substack update` will not lose anything.")
+        return 0
+    ui.fail(f"{len(result['problems'])} issue(s). Do not run `update` until they are "
+            f"resolved.")
+    return 1
+
+
+def cmd_agent(client, args):
+    """Install these instructions into the user's coding agent."""
+    if args.action == "print":
+        print(agent.render(args.target or "claude"))
+        return 0
+    target = args.target or ("claude" if args.user_wide else agent.detect(args.dir))
+    path, action = agent.install(target, root=args.dir, force=args.force,
+                                 user_wide=args.user_wide)
+    verb = {"written": "wrote", "updated": "updated", "appended": "appended to",
+            "unchanged": "already current"}[action]
+    ui.ok(f"{verb} {path}")
+    print()
+    print("Your agent can now drive Substack for you. Try asking it:")
+    print(ui.dim('  "what Substack drafts do I have?"'))
+    print(ui.dim('  "push posts/my-article.md to Substack as a draft"'))
+    print(ui.dim('  "back up my whole Substack archive into ./archive"'))
     return 0
 
 
@@ -732,7 +784,7 @@ def cmd_sitemap(client, args):
 
 # ---------------------------------------------------------------- parser
 
-NO_CLIENT = {"init", "render", "version"}
+NO_CLIENT = {"init", "render", "agent"}
 
 
 def build_parser():
@@ -793,8 +845,22 @@ def build_parser():
 
     audit = add("audit", "report what `update` would destroy on the live page")
     audit.add_argument("file")
+    audit.add_argument("--json", action="store_true",
+                       help="machine-readable result, with a `clean` field to gate on")
     audit.add_argument("--template", metavar="NAME")
     audit.add_argument("--no-template", action="store_true")
+
+    agent_cmd = add("agent", "teach your coding agent to drive this tool")
+    agent_cmd.add_argument("action", nargs="?", default="install",
+                           choices=["install", "print"])
+    agent_cmd.add_argument("--target", choices=sorted(agent.TARGETS),
+                           help="claude, cursor, agents, or codex. Detected by default.")
+    agent_cmd.add_argument("--dir", metavar="PATH", help="project root (default: current)")
+    agent_cmd.add_argument("--global", dest="user_wide", action="store_true",
+                           help="install for every project, into your home directory "
+                                "(claude and cursor only)")
+    agent_cmd.add_argument("--force", action="store_true",
+                           help="overwrite an existing skill file")
 
     pull = add("pull", "download live posts as markdown plus their images")
     pull.add_argument("id", nargs="*", help="post ids or slugs")

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="639" viewBox="0 0 640 639" role="img" aria-label="Terminal session: your agent, driving it">
+<rect width="640" height="639" rx="10" fill="#0d1117" stroke="#30363d"/>
+<path d="M0 10a10 10 0 0 1 10-10h620a10 10 0 0 1 10 10v22H0z" fill="#161b22"/>
+<line x1="0" y1="32" x2="640" y2="32" stroke="#30363d"/>
+<circle cx="18" cy="16" r="5.5" fill="#ff5f57"/>
+<circle cx="36" cy="16" r="5.5" fill="#febc2e"/>
+<circle cx="54" cy="16" r="5.5" fill="#28c840"/>
+<text x="320.0" y="21" fill="#6e7681" font-size="12" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" text-anchor="middle">your agent, driving it</text>
+<text x="22.0" y="52" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="38.8" y="52" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack agent install</text>
+<text x="22.0" y="73" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="73" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="73" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">wrote .claude/skills/substack-cli/SKILL.md</text>
+<text x="22.0" y="115" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Your agent can now drive Substack for you. Try asking it:</text>
+<text x="22.0" y="136" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  &quot;what Substack drafts do I have?&quot;</text>
+<text x="22.0" y="157" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  &quot;push posts/my-article.md to Substack as a draft&quot;</text>
+<text x="22.0" y="178" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  &quot;back up my whole Substack archive into ./archive&quot;</text>
+<text x="22.0" y="220" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve"># then, in Claude Code:</text>
+<text x="22.0" y="262" fill="#d2a8ff" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">&gt; </text>
+<text x="38.8" y="262" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">fix the typo in paragraph three of my last post and push it live</text>
+<text x="22.0" y="304" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  I will pull the live copy first, edit it, and audit before updating.</text>
+<text x="22.0" y="346" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="38.8" y="346" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="55.6" y="346" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack pull 209491778 -o ./posts --force</text>
+<text x="22.0" y="367" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  [1/1] how-i-publish-from-the-terminal  (7 image(s))</text>
+<text x="22.0" y="409" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="38.8" y="409" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="55.6" y="409" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack audit ./posts/how-i-publish-from-the-terminal.md --json</text>
+<text x="22.0" y="430" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  {&quot;clean&quot;: true, &quot;problems&quot;: [], &quot;images&quot;: {&quot;local&quot;: 7, &quot;live&quot;: 7},</text>
+<text x="22.0" y="451" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">   &quot;preserved&quot;: {&quot;youtube2&quot;: 1}, &quot;destroyed&quot;: {}}</text>
+<text x="22.0" y="493" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  Audit is clean and the YouTube embed will be preserved. Updating now.</text>
+<text x="22.0" y="535" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="38.8" y="535" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="55.6" y="535" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack update ./posts/how-i-publish-from-the-terminal.md --yes</text>
+<text x="22.0" y="556" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="556" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="556" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">live post 209491778 updated: How I Publish From The Terminal</text>
+<text x="22.0" y="577" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">    post_date unchanged, no email sent</text>
+<text x="22.0" y="598" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">live      </text>
+<text x="106.0" y="598" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="122.8" y="598" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">blog.atharvashah.com/p/how-i-publish-from-the-terminal</text>
+</svg>

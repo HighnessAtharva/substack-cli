@@ -105,7 +105,7 @@ and 2 pullquotes, with nothing in the output saying so.
 
 Yes. Every command exits `0` on success and `1` on a failure, prints machine-readable JSON
 where it makes sense, and refuses destructive actions without an explicit flag. See
-[workflows.md](workflows.md) and [agent-skill.md](agent-skill.md).
+[workflows.md](workflows.md) and [agents.md](agents.md).
 
 ## How do I contribute?
 
