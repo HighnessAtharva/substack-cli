@@ -195,9 +195,9 @@ def _ask(prompt, secret=False):
 
 def cmd_doctor(client, args):
     """Verify auth and print the resolved configuration."""
-    source = client.config.source or "environment variables"
-    ui.kv("config", source, 14)
-    ui.kv("publication", client.config.publication_url, 14)
+    publication = client.config.publication_url   # raises the setup hint first
+    ui.kv("config", client.config.source or "environment variables", 14)
+    ui.kv("publication", publication, 14)
 
     publication_id, user_id = client.whoami()
     details = client.publication()
