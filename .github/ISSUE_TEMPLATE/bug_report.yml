@@ -1,0 +1,39 @@
+name: Bug report
+description: Something behaved differently from what the docs say
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste a session cookie here.** If you already have, sign out of all
+        sessions from Substack's account settings, which invalidates it immediately.
+  - type: textarea
+    id: command
+    attributes:
+      label: The command you ran
+      render: shell
+      placeholder: substack push posts/my-post.md --template INIT
+    validations: { required: true }
+  - type: textarea
+    id: output
+    attributes:
+      label: The full output
+      description: Rerun with -v if you can. Redact anything that looks like a cookie.
+      render: shell
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+    validations: { required: true }
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of `substack doctor`
+      render: shell
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "substack --version, plus your Python version and OS"
+    validations: { required: true }

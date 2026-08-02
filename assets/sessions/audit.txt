@@ -1,0 +1,26 @@
+$ substack pull 200988281 -o ./posts
+[1/1] reflections-on-devrel-uni-cohort7  reflections-on-devrel-uni-cohort7.md  (14 image(s))
+
+OK  wrote 1 file(s) to ./posts
+
+$ substack audit ./posts/reflections-on-devrel-uni-cohort7.md
+audit reflections-on-devrel-uni-cohort7.md against live post 200988281
+live title    Reflections On DevRel Uni Cohort 7 - My Takeaways from 5x Sessions
+local title   Reflections On DevRel Uni Cohort 7 - My Takeaways from 5x Sessions
+
+OK  1 x calloutBlock will be preserved and re-anchored
+OK  3 x twitter2 will be preserved and re-anchored
+OK  1 x youtube2 will be preserved and re-anchored
+OK  images: 14 local, 13 live (nothing to lose)
+
+OK  clean. `substack update` will not lose anything.
+
+$ substack audit ./posts/edited-by-hand.md
+audit edited-by-hand.md against live post 200988281
+
+OK  1 x calloutBlock will be preserved and re-anchored
+OK  3 x twitter2 will be preserved and re-anchored
+FAIL  images: 5 local, 13 live. 8 image(s) exist only on Substack and an update would delete them.
+  run `substack pull 200988281` to bring the live copy down and merge them into your markdown first
+
+FAIL  1 issue(s). Do not run `update` until they are resolved.

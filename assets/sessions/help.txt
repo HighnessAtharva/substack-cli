@@ -1,0 +1,49 @@
+$ substack --help
+usage: substack [-h] [--version] [--config PATH] [-v] <command> ...
+
+Push, pull, and publish Substack posts from the command line.
+
+positional arguments:
+  <command>
+    init         save credentials and verify them
+    doctor       check auth and print the resolved configuration
+    list         list drafts, or published posts with --published
+    get          print one post's metadata
+    templates    list the saved post templates on this account
+    render       convert markdown to ProseMirror JSON offline, send nothing
+    push         create or update a DRAFT from a markdown file
+    update       rewrite an already LIVE post (no email, no feed bump)
+    audit        report what `update` would destroy on the live page
+    pull         download live posts as markdown plus their images
+    set          change a post's title, subtitle, or slug
+    delete       delete a draft (refuses published posts)
+    publish      publish a draft NOW (irreversible, may email subscribers)
+    unpublish    take a live post back to draft state
+    schedule     schedule a draft to publish itself later
+    unschedule   cancel a scheduled release
+    note         post a Substack Note (publishes immediately)
+    note-delete  delete one of your Notes
+    sitemap      build a local index of every live post
+
+options:
+  -h, --help     show this help message and exit
+  --version      show program's version number and exit
+  --config PATH  use this config file
+  -v, --verbose  log every HTTP call
+
+examples:
+  substack init                              save credentials, verify them
+  substack doctor                            check auth, print what is configured
+  substack list --limit 10                   your ten most recent drafts
+  substack push post.md                      create or update a draft from markdown
+  substack push post.md --template Standard  wrap it in a saved post template
+  substack render post.md                    convert offline, print the JSON, send nothing
+  substack audit post.md                     what an update would destroy, before it does
+  substack update post.md --yes              rewrite a LIVE post, no email, no feed bump
+  substack pull my-post-slug -o ./posts      bring a live post down as markdown + images
+  substack pull --published -o ./posts       bring the whole archive down
+  substack publish 12345 --yes --no-email    go live now, without emailing subscribers
+  substack schedule 12345 --at "2027-01-09 09:00"
+  substack note "shipping something small today"
+
+docs: https://github.com/HighnessAtharva/substack-cli

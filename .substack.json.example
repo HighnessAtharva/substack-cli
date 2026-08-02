@@ -1,0 +1,6 @@
+{
+  "publication_url": "https://yourname.substack.com",
+  "session_token": "<your connect.sid cookie>",
+  "hub_session_token": "<your substack.sid cookie, only needed for scheduling>",
+  "template": "INIT"
+}

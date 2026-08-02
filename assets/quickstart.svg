@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="660" viewBox="0 0 690 660" role="img" aria-label="Terminal session: setup, once">
+<rect width="690" height="660" rx="10" fill="#0d1117" stroke="#30363d"/>
+<path d="M0 10a10 10 0 0 1 10-10h670a10 10 0 0 1 10 10v22H0z" fill="#161b22"/>
+<line x1="0" y1="32" x2="690" y2="32" stroke="#30363d"/>
+<circle cx="18" cy="16" r="5.5" fill="#ff5f57"/>
+<circle cx="36" cy="16" r="5.5" fill="#febc2e"/>
+<circle cx="54" cy="16" r="5.5" fill="#28c840"/>
+<text x="345.0" y="21" fill="#6e7681" font-size="12" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" text-anchor="middle">setup, once</text>
+<text x="22.0" y="52" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="38.8" y="52" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">pipx install git+https://github.com/HighnessAtharva/substack-cli</text>
+<text x="22.0" y="73" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="38.8" y="73" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack init</text>
+<text x="22.0" y="94" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack-cli setup</text>
+<text x="22.0" y="136" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Two values, both from a browser where you are logged in.</text>
+<text x="22.0" y="178" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Publication URL (https://yourname.substack.com): https://blog.atharvashah.com</text>
+<text x="22.0" y="220" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  Open https://blog.atharvashah.com in your browser, press F12,</text>
+<text x="22.0" y="241" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  go to Application &gt; Cookies &gt; that domain, and copy connect.sid</text>
+<text x="22.0" y="283" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">connect.sid: ****************************************</text>
+<text x="22.0" y="325" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="325" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="325" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">wrote C:\Users\you\AppData\Roaming\substack-cli\config.json</text>
+<text x="22.0" y="346" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="346" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="346" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">authenticated as user 85873917 on &#x27;Atharva Shah&#x27; (publication 2433797)</text>
+<text x="22.0" y="388" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Next: substack list  or  substack push post.md</text>
+<text x="22.0" y="430" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="38.8" y="430" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack doctor</text>
+<text x="22.0" y="451" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">config      </text>
+<text x="122.8" y="451" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="451" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">C:\Users\you\AppData\Roaming\substack-cli\config.json</text>
+<text x="22.0" y="472" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">publication </text>
+<text x="122.8" y="472" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="472" fill="#58a6ff" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">https://blog.atharvashah.com</text>
+<text x="22.0" y="493" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">name        </text>
+<text x="122.8" y="493" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="493" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Atharva Shah</text>
+<text x="22.0" y="514" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">ids         </text>
+<text x="122.8" y="514" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="514" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">publication 2433797, user 85873917</text>
+<text x="22.0" y="535" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="535" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="535" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">connect.sid works</text>
+<text x="22.0" y="556" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">posts       </text>
+<text x="122.8" y="556" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="556" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">0 draft(s), 50+ published</text>
+<text x="22.0" y="577" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">templates   </text>
+<text x="122.8" y="577" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="139.6" y="577" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">INIT (id 3636)</text>
+<text x="22.0" y="598" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="598" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="598" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack.sid works (scheduling available, Atharva Shah)</text>
+<text x="22.0" y="619" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="619" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="619" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">Pillow installed, markdown tables will render</text>
+</svg>

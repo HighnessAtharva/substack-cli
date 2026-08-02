@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="345" viewBox="0 0 900 345" role="img" aria-label="Terminal session: markdown to draft">
+<rect width="900" height="345" rx="10" fill="#0d1117" stroke="#30363d"/>
+<path d="M0 10a10 10 0 0 1 10-10h880a10 10 0 0 1 10 10v22H0z" fill="#161b22"/>
+<line x1="0" y1="32" x2="900" y2="32" stroke="#30363d"/>
+<circle cx="18" cy="16" r="5.5" fill="#ff5f57"/>
+<circle cx="36" cy="16" r="5.5" fill="#febc2e"/>
+<circle cx="54" cy="16" r="5.5" fill="#28c840"/>
+<text x="450.0" y="21" fill="#6e7681" font-size="12" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" text-anchor="middle">markdown to draft</text>
+<text x="22.0" y="52" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">$ </text>
+<text x="38.8" y="52" fill="#f0f6fc" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">substack push my-post.md --template INIT</text>
+<text x="22.0" y="73" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">push my-post.md</text>
+<text x="22.0" y="94" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  uploaded image: architecture.png</text>
+<text x="22.0" y="115" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  rendered table: table-cbf369e6cf5a.png</text>
+<text x="22.0" y="136" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  uploaded cover: cover.png (1.2 MB)</text>
+<text x="22.0" y="157" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  wrapped in template &#x27;INIT&#x27; (cover inlined)</text>
+<text x="22.0" y="178" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  slug was empty after draft creation, setting &#x27;how-i-publish-from-the-terminal&#x27;</text>
+<text x="22.0" y="199" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  slug corrected to &#x27;how-i-publish-from-the-terminal&#x27;</text>
+<text x="22.0" y="220" fill="#3fb950" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">OK</text>
+<text x="38.8" y="220" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="55.6" y="220" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">created draft 209491778: How I Publish From The Terminal</text>
+<text x="22.0" y="241" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  wrote `id: 209491778` into my-post.md, so the next push updates this draft instead of making another</text>
+<text x="22.0" y="283" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">slug      </text>
+<text x="106.0" y="283" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="122.8" y="283" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">how-i-publish-from-the-terminal</text>
+<text x="22.0" y="304" fill="#6e7681" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">edit      </text>
+<text x="106.0" y="304" fill="#c9d1d9" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">  </text>
+<text x="122.8" y="304" fill="#58a6ff" font-size="14" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">https://blog.atharvashah.com/publish/post/209491778</text>
+</svg>

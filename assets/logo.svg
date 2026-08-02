@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="substack-cli logo">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#0b0e14"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b46ff"/>
+      <stop offset="1" stop-color="#121bfa"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#plate)"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#2a3140" stroke-width="4"/>
+
+  <!-- Three stacked bars: a post, a draft, and the command line that ships them. -->
+  <rect x="112" y="126" width="288" height="34" rx="8" fill="url(#bar)"/>
+  <rect x="112" y="188" width="288" height="34" rx="8" fill="url(#bar)" opacity="0.62"/>
+
+  <g stroke="#f5a524" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <polyline points="126,286 182,332 126,378"/>
+    <line x1="218" y1="378" x2="330" y2="378"/>
+  </g>
+</svg>

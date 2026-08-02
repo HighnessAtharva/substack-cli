@@ -1,0 +1,28 @@
+$ pipx install git+https://github.com/HighnessAtharva/substack-cli
+$ substack init
+substack-cli setup
+
+Two values, both from a browser where you are logged in.
+
+Publication URL (https://yourname.substack.com): https://blog.atharvashah.com
+
+  Open https://blog.atharvashah.com in your browser, press F12,
+  go to Application > Cookies > that domain, and copy connect.sid
+
+connect.sid: ****************************************
+
+OK  wrote C:\Users\you\AppData\Roaming\substack-cli\config.json
+OK  authenticated as user 85873917 on 'Atharva Shah' (publication 2433797)
+
+Next: substack list  or  substack push post.md
+
+$ substack doctor
+config        C:\Users\you\AppData\Roaming\substack-cli\config.json
+publication   https://blog.atharvashah.com
+name          Atharva Shah
+ids           publication 2433797, user 85873917
+OK  connect.sid works
+posts         0 draft(s), 50+ published
+templates     INIT (id 3636)
+OK  substack.sid works (scheduling available, Atharva Shah)
+OK  Pillow installed, markdown tables will render

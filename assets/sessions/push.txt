@@ -1,0 +1,13 @@
+$ substack push my-post.md --template INIT
+push my-post.md
+  uploaded image: architecture.png
+  rendered table: table-cbf369e6cf5a.png
+  uploaded cover: cover.png (1.2 MB)
+  wrapped in template 'INIT' (cover inlined)
+  slug was empty after draft creation, setting 'how-i-publish-from-the-terminal'
+  slug corrected to 'how-i-publish-from-the-terminal'
+OK  created draft 209491778: How I Publish From The Terminal
+  wrote `id: 209491778` into my-post.md, so the next push updates this draft instead of making another
+
+slug        how-i-publish-from-the-terminal
+edit        https://blog.atharvashah.com/publish/post/209491778

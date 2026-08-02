@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "substack-cli"
+version = "1.0.0"
+description = "Push, pull, and publish Substack posts from the command line. Markdown in, live newsletter out."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "Atharva Shah", email = "hello@atharvashah.com" }]
+keywords = [
+    "substack", "substack-api", "substack-cli", "newsletter", "publishing",
+    "markdown", "static-site", "blogging", "cms", "content-ops",
+    "markdown-to-substack", "substack-automation", "cli", "writing",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Text Processing :: Markup :: Markdown",
+]
+dependencies = []
+
+[project.optional-dependencies]
+tables = ["Pillow>=9.0"]
+dev = ["Pillow>=9.0", "pytest>=7", "ruff>=0.4"]
+
+[project.scripts]
+substack = "substack_cli.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/HighnessAtharva/substack-cli"
+Documentation = "https://github.com/HighnessAtharva/substack-cli#readme"
+Source = "https://github.com/HighnessAtharva/substack-cli"
+Issues = "https://github.com/HighnessAtharva/substack-cli/issues"
+Author = "https://atharvashah.com"
+
+[tool.setuptools.packages.find]
+include = ["substack_cli*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501", "B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

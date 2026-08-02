@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="substack-cli: push, pull, and publish Substack posts from the command line">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#070a10"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b46ff"/>
+      <stop offset="1" stop-color="#121bfa"/>
+    </linearGradient>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <g opacity="0.10" stroke="#5b6craa">
+    <path d="M0 160h1280M0 320h1280M0 480h1280" stroke="#8b949e" stroke-width="1"/>
+  </g>
+
+  <!-- mark -->
+  <g transform="translate(88 96)">
+    <rect width="128" height="128" rx="28" fill="#161b22" stroke="#2a3140" stroke-width="2"/>
+    <rect x="28" y="32" width="72" height="9" rx="4" fill="url(#accent)"/>
+    <rect x="28" y="48" width="72" height="9" rx="4" fill="url(#accent)" opacity="0.6"/>
+    <g stroke="#f5a524" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <polyline points="32,74 47,86 32,98"/>
+      <line x1="58" y1="98" x2="98" y2="98"/>
+    </g>
+  </g>
+
+  <text class="mono" x="88" y="308" fill="#f0f6fc" font-size="82" font-weight="700">substack-cli</text>
+  <text x="90" y="366" fill="#c9d1d9" font-size="32" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+    Markdown in. Live newsletter out.
+  </text>
+  <text x="90" y="410" fill="#8b949e" font-size="22" font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+    Push, pull, schedule, and publish Substack posts from your terminal. Python stdlib, zero dependencies.
+  </text>
+
+  <g transform="translate(88 452)">
+    <rect width="1104" height="118" rx="12" fill="#161b22" stroke="#30363d"/>
+    <text class="mono" x="28" y="46" font-size="21"><tspan fill="#3fb950">$</tspan><tspan fill="#f0f6fc"> substack push my-post.md</tspan></text>
+    <text class="mono" x="28" y="82" font-size="21"><tspan fill="#3fb950">OK</tspan><tspan fill="#c9d1d9">  created draft 209491778  </tspan><tspan fill="#58a6ff">yourname.substack.com/p/my-post</tspan></text>
+  </g>
+</svg>
