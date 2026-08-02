@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "substack-cli"
-version = "1.1.0"
+version = "1.2.0"
 description = "Publish and manage Substack from the command line, or let your coding agent do it. Markdown in, live newsletter out."
 readme = "README.md"
 requires-python = ">=3.8"

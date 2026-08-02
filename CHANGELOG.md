@@ -3,6 +3,16 @@
 All notable changes are recorded here. This project follows
 [semantic versioning](https://semver.org).
 
+## [1.2.0] - 2026-08-02
+
+### Added
+
+- `substack cover <id> --image X`, which replaces a post's hero image without touching a
+  word of its body. It finds the hero node by matching `cover_image` or by position above
+  all text, refuses to overwrite a picture that sits below body text because that is
+  article content, and fingerprints the document to assert exactly one node changed before
+  anything is written. `--insert-hero` covers posts that never had one.
+
 ## [1.1.0] - 2026-08-02
 
 Agent support, which is what the tool was built for.

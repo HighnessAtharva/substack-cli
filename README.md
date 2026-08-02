@@ -151,7 +151,7 @@ substack publish 209491778 --yes --no-email
 | **Schedule** | Set a real server-side scheduled release, and cancel it. |
 | **Notes** | Post a Substack Note from a file or a string, with image attachments. |
 | **Tables** | Markdown tables render to a PNG, because Substack's editor has no table support. |
-| **Covers** | The hero image uploads itself and fills your template's cover slot. |
+| **Covers** | The hero image uploads itself, and `cover` swaps it on a live post without touching the text. |
 | **Slugs** | Your file owns the public URL. Substack never gets to invent a truncated one. |
 
 It runs on the Python standard library alone. There are no dependencies to install, no API
@@ -188,6 +188,7 @@ same paragraph they followed. Rewriting the text around them does not lose them.
 | `substack push <file>` | Create or update a draft from markdown. |
 | `substack update <file> --yes` | Rewrite a live post. No email, no feed bump. |
 | `substack audit <file> [--json]` | Report what an update would destroy. |
+| `substack cover <id> --image X` | Swap a post's hero image, body untouched. |
 | `substack pull <id\|slug>` | Download a live post as markdown plus images. |
 | `substack pull --published` | Download the entire archive. |
 | `substack render <file>` | Convert to ProseMirror JSON offline. Sends nothing. |
@@ -252,7 +253,7 @@ CI, then push and schedule it. Every command is scriptable and exits non-zero on
 
 ## Contributing
 
-Issues and pull requests are welcome. The test suite is 110 offline checks that run in
+Issues and pull requests are welcome. The test suite is 122 offline checks that run in
 under a second, and every one of them pins a bug that reached a live newsletter.
 
 ```bash

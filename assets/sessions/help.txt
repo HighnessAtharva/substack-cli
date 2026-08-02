@@ -14,6 +14,7 @@ positional arguments:
     push         create or update a DRAFT from a markdown file
     update       rewrite an already LIVE post (no email, no feed bump)
     audit        report what `update` would destroy on the live page
+    cover        replace a post's hero image without touching its text
     agent        teach your coding agent to drive this tool
     pull         download live posts as markdown plus their images
     set          change a post's title, subtitle, or slug

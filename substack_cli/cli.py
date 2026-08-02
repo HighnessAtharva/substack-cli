@@ -6,7 +6,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import __version__, agent, posts, sitemap, ui
+from . import __version__, agent, covers, posts, sitemap, ui
 from . import config as config_module
 from . import frontmatter as fm
 from .api import Client
@@ -553,6 +553,75 @@ def cmd_audit(client, args):
     return 1
 
 
+def cmd_cover(client, args):
+    """Replace a post's hero image without touching its text.
+
+    Two things change and nothing else: the `cover_image` field, which is the
+    thumbnail Substack serves to the feed, the archive, and social embeds, and
+    the one image node in the body that holds the hero.
+    """
+    post_id = resolve_post(client, args.id)
+    draft = client.draft(post_id)
+    body = posts.load_body(draft)
+    nodes = list(body.get("content", []) or [])
+    title = draft.get("title") or draft.get("draft_title") or "(untitled)"
+
+    index, reason = covers.find_hero(nodes, draft.get("cover_image"),
+                                     banner_marker=args.banner)
+    ui.heading(f"cover {post_id}: {title}")
+    ui.kv("hero", f"node {index} ({reason})" if index is not None else f"none, {reason}", 12)
+
+    inserting = index is None and args.insert_hero
+    if index is None and not args.insert_hero:
+        ui.warn("only `cover_image` will change, the body keeps its current first image "
+                "(pass --insert-hero to add the cover above it)")
+
+    if args.dry_run:
+        ui.kv("would set", str(Path(args.image).name), 12)
+        print(ui.dim("dry run, nothing sent"))
+        return 0
+    if not args.yes:
+        die("this rewrites the hero image on a live post. Rerun with --yes to confirm.")
+
+    url = args.image if args.image.startswith("http") else client.upload_image(args.image)
+    ui.step(f"uploaded {Path(args.image).name}" if not args.image.startswith("http")
+            else "using the url as given")
+
+    if inserting:
+        updated = covers.insert_hero(nodes, url)
+        covers.assert_only_the_hero_moved(nodes, updated, 0, expect_insert=True)
+        ui.step("inserted the cover as a new first node")
+    elif index is not None:
+        updated = covers.patch(nodes, index, url)
+        covers.assert_only_the_hero_moved(nodes, updated, index)
+        ui.step(f"patched node {index}, every other node is byte-identical")
+    else:
+        updated = nodes
+
+    payload = {"cover_image": url,
+               "draft_title": draft.get("title") or draft.get("draft_title"),
+               "draft_subtitle": draft.get("subtitle") or draft.get("draft_subtitle") or ""}
+    if updated is not nodes:
+        payload["draft_body"] = json.dumps({"type": "doc", "content": updated})
+    client.put(f"/drafts/{post_id}", payload)
+
+    if draft.get("is_published"):
+        client.post(f"/drafts/{post_id}/publish",
+                    {"send": False, "share_automatically": False})
+
+    after = client.draft(post_id)
+    if after.get("cover_image") != url:
+        die("the write returned OK but cover_image did not change. Check the post in "
+            "the Substack editor.")
+    print()
+    ui.ok(f"cover replaced on {post_id}")
+    ui.step(f"post_date unchanged: {after.get('post_date')}")
+    ui.step(f"no email sent: email_sent_at is still {after.get('email_sent_at')}")
+    if after.get("slug"):
+        ui.kv("live", post_url(client, after["slug"]))
+    return 0
+
+
 def cmd_agent(client, args):
     """Install these instructions into the user's coding agent."""
     if args.action == "print":
@@ -849,6 +918,17 @@ def build_parser():
                        help="machine-readable result, with a `clean` field to gate on")
     audit.add_argument("--template", metavar="NAME")
     audit.add_argument("--no-template", action="store_true")
+
+    cover = add("cover", "replace a post's hero image without touching its text")
+    cover.add_argument("id", help="post id or slug")
+    cover.add_argument("--image", required=True, metavar="PATH_OR_URL")
+    cover.add_argument("--yes", action="store_true", help="confirm writing to a live post")
+    cover.add_argument("--dry-run", action="store_true",
+                       help="say which node would change, then stop")
+    cover.add_argument("--insert-hero", action="store_true",
+                       help="add the cover as a new first node when the post has none")
+    cover.add_argument("--banner", metavar="SUBSTRING",
+                       help="src fragment identifying a template banner to skip")
 
     agent_cmd = add("agent", "teach your coding agent to drive this tool")
     agent_cmd.add_argument("action", nargs="?", default="install",

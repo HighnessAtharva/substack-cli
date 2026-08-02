@@ -179,6 +179,29 @@ script should read:
 `clean` is the field to gate on. The exit code matches it, so `substack audit post.md &&
 substack update post.md --yes` is a safe chain either way.
 
+## cover
+
+```bash
+substack cover <id|slug> --image PATH_OR_URL --yes [--dry-run] [--insert-hero] [--banner SUBSTRING]
+```
+
+Replaces a post's hero image without touching a word of its body. Use this when the only
+thing changing is the picture, and for posts that have no local markdown file at all.
+
+Two things change. `cover_image`, which is the thumbnail Substack serves to the feed, the
+archive, and social embeds, and the single image node in the body that holds the hero.
+
+Finding that node is the careful part. An image whose src already equals `cover_image` is
+unambiguous. Otherwise an image sitting above all text is the hero slot. A picture that
+sits below body text is real article content, and the command refuses to touch it and
+updates `cover_image` alone. `--insert-hero` adds the cover as a new first node in that
+case, and `--banner` skips a template brand strip that would otherwise look like the hero.
+
+Before writing anything it fingerprints the document and asserts that exactly one node
+changed and no structure moved. A failure aborts with nothing sent.
+
+`--dry-run` names the node it would patch and stops.
+
 ## pull
 
 ```bash
