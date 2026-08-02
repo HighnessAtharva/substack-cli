@@ -19,8 +19,8 @@ jobs:
           - os: macos-latest
             python: "3.8"
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python }}
       - run: python -m pip install --upgrade pip
@@ -35,8 +35,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - run: pip install ruff
@@ -46,7 +46,7 @@ jobs:
     name: no credentials committed
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Look for session cookies
         run: |
           if git grep -nE 's%3A[A-Za-z0-9_.%-]{30,}' -- . ':!*.yml'; then
